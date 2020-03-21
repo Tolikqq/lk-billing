@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+
+{% block scripts %}
+        <script type="text/javascript">
+
+        function calc() {
+            //получаем ссылку на элемент Select 
+            var users = document.getElementById("users");
+ 
+            var price = 0;
+            price = parseInt(users.options[users.selectedIndex].value);
+
+            price = parseInt({{ configuration.tarif }}) * price;
+            
+            document.getElementById('result').value = price;
+
+        }
+</script>
+{% endblock %}
+
+  {% block content %}
+  <form method="post" action="/order/add-{{ configuration.id }}">
+    {% csrf_token %}
+
+ <b>Количество пользователей:</b><br/>
+ <select onchange="calc()" id="users" name='users' class="form-control select">
+    <option value="1">1 пользователь</option>
+    <option value="2">2 пользователя</option>
+    <option value="3">3 пользователя</option>
+    <option value="4">4 пользователя</option>
+    <option value="5">5 пользователя</option>
+</select><br/>
+<div>
+  <!--  Стоимость заказа: <label id="result" name='result'>{{ configuration.tarif }}</label> руб. -->
+  <label for="result"> Стоимость заказа: </label>
+<input type="text" name="result" id="result" value="{{ configuration.tarif }}" style="border-color:white; border-width:0;  width: 60px ">руб.
+
+</div> 
+ <input type="submit"  class="btn btn-success margin_button" value="Оформить заказ" >
+  
+</form>
+   {% endblock %} 
+

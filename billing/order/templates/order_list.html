@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+ {% block content %}
+ <div class="container">
+<h4> Личные данные</h4>
+{{ request.user.username }}
+{{ request.user.email }}
+<input id="submit-btn" class="btn btn-light" type="submit" value="Изменить данные">
+</div>
+
+ {% endblock %} 

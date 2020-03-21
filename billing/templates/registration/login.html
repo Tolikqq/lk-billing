@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+ {% block content %}
+
+<div class="container">    
+    <div class="row" id="pwd-container">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+			<section class="login-form">
+           	{% if next %}
+	<form action="/login/?next={{next}}" method="post">
+	{% else %}
+	<form action="/login/" method="post">
+	{% endif %}
+
+	{% csrf_token %}
+
+
+<label for="{{ form.username.id_for_label }}"></label>
+<input id="{{ form.username.id_for_label }}" type="text" name="username" placeholder="Логин" required class="form-control input-lg" value="">
+
+
+<label for="{{ form.password.id_for_label }}"></label>
+<input id="{{ form.password.id_for_label }}" type="password" name="password" class="form-control input-lg" placeholder="Пароль" required>
+
+<button type="submit" name="go" class="btn btn-lg btn-primary btn-block">Войти</button>
+                                        
+                    <div>
+                        <a href="#">Забыли пароль?</a>
+                    </div>
+                    <div>
+                        <a href="#">Регистрация</a>
+                    </div>
+</form>
+{% if form.errors %}
+<div class="alert alert-danger" role="alert">
+  Ошибка авторизации, проверьте правильность логина и пароля
+</div>
+{% endif %}
+            </section>
+        </div>
+    </div>
+</div>
+
+ {% endblock %} 

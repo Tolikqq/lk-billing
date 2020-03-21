@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %} Заказы {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+ {% block content %}
+ <div class="container">
+ 	<h5>Заказы</h5>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Тариф</th>
+      <th scope="col">Количество пользователей</th>
+      <th scope="col">Сумма</th>
+      <th scope="col">Время заказа</th>
+    </tr>
+  </thead>
+  {% for order in object_list %}
+  <tbody>
+    <tr>
+      <th scope="row">{{ order.configuration }}</th>
+      <td align="center">{{ order.countuser }}</td>
+      <td>{{ order.amount}} руб.</td>
+      <td>{{ order.datetime|date:"d.m.Y" }} {{ order.datetime|time:"H:i" }}</td>
+    </tr>
+  </tbody>
+  {% empty %}
+    <li>Заказов нет</li>
+  {% endfor %}
+</table>
+
+</div>
+ {% endblock %} 

@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %} Оплата {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+ {% block content %}
+ <div class="container">
+ <div class="row">
+ <div class="cell2">
+
+ 	<h5> На вашем счете: {{balance_sum}} руб.</h5>
+<ul>
+	<li><a href="{% url 'balance/add'%}" class="btn btn-light"> Оплатить по карте</a> </li>
+	<li><a href="{% url 'balance/add'%}" class="btn btn-light"> Безналичный расчет</a> </li>
+</ul>
+</div>
+<div class="cell2">
+ 	<h5>История платежей</h5>
+	{% for balance in object_list %}
+    <li> {{ balance.user }} - {{ balance.amount }} руб. - {{ balance.datetime|date:"d.m.Y" }} {{ balance.datetime|time:"H:i" }} </li>
+
+{% empty %}
+    <li>Платежей нет</li>
+	
+{% endfor %}
+</div>
+</div>
+</div>
+
+
+ {% endblock %} 

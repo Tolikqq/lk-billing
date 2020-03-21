@@ -1,0 +1,33 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Поддержка{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+ {% block content %}
+ <div class="container">
+ 	<h5>Тикеты</h5>
+ 	<a href="{% url 'feedback-create'%}" class="btn btn-light navigation"> Создать тикет </a>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Обновлено</th>
+      <th scope="col">Сообщение</th>
+    </tr>
+  </thead>
+  {% for feedback in object_list %}
+  <tbody>
+    <tr>
+      <td>{{ feedback.datetime|date:"d.m.Y" }} {{ feedback.datetime|time:"H:i" }}</td>
+      <td align="center">{{ feedback.text }}</td>
+    </tr>
+  </tbody>
+  {% empty %}
+    <li>Нет сообщений.</li>
+  {% endfor %}
+</table>
+
+</div>
+ {% endblock %} 

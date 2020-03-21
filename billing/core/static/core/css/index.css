@@ -1,0 +1,34 @@
+.navigation {
+	margin-bottom: 20px;
+}
+.navbar-right {
+position:absolute;
+right: 100px;
+}
+
+.balance_list__item {
+margin-bottom: 20px;
+}
+
+.margin_button {
+	margin-top: 15px;
+	margin-left: 15px; 
+}
+.cell2 {
+    width: 50%;
+}
+
+.cell_left {
+	font-weight: 700;
+}
+
+.new-ticket-form {
+	    width: 99%;
+}
+
+.main
+{
+  width: 700px;
+  margin: 0 auto;
+  font-size: 10px;
+}

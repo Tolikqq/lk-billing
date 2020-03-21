@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row row-cols-4">
+    <div class="col"><b>Номер учетной записи</b></div>
+    <div class="col"> {{request.user.id }} </div>
+    <div class="col"><b>Телефон</b></div>
+    <div class="col">-</div>
+    <div class="col"><b>Логин</b></div>
+    <div class="col"> {{request.user.username }} </div>
+    <div class="col"><b>Адрес</b></div>
+    <div class="col">-</div>
+    <div class="col"><b>Почта</b></div>
+    <div class="col navigation"> {{request.user.email }} </div>
+  </div>
+  <div class="alert alert-info " role="alert">
+  Чтобы изменить данные необходимо cоздать тикет и по необходимости направить подтверждающие документы на e-mail: 002@mail.ru, указав номер тикета в теме письма
+</div>
+</div>
+
+{% endblock %} 

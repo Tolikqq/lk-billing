@@ -1,0 +1,29 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Поддержка{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+ {% block scripts %}
+ <script type="text/javascript">
+ 	console.log({{form.as_p}})
+ </script>
+ {% endblock %}
+ {% block content %}
+		<h3> Напишите письмо в поддержку </h3>
+		<form method="post" enctype="multipart/form-data" action="/feedback/add/">
+			{% csrf_token %}
+			
+		
+	
+<div class="form-group">
+    <label for="{{form.text.id_for_label}}">Сообщение</label>
+    <textarea class="form-control" name="text" id="{{form.text.id_for_label}}" rows="3"></textarea>
+  </div>
+
+			<input id="feedback-submit" type="submit">
+		</form>
+
+ {% endblock %} 

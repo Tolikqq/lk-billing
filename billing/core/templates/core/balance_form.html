@@ -1,0 +1,18 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block title %} Оплата {% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+ {% block content %}
+<h1> Новая оплата </h1>
+		<form method="post" enctype="multipart/form-data" action="/balance/add">
+			{% csrf_token %}
+			{{ form }}
+
+
+			<input id="balance-submit" type="submit">
+		</form>
+ {% endblock %} 

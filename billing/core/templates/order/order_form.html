@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Главная{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/css/index.css' %}">
+ {% endblock %}
+
+ {% block content %}
+<section id="plans">
+    <div class="container">
+        <div class="row">
+			<div class="row">
+                {% for configuration in object_list %}
+                <div id="custom_col" class="col-md-4 text-center shadow-sm p-3 mb-5 bg-white rounded">
+                    <div class="panel panel-pricing">
+                        <div class="panel-heading">
+							<h3>Тариф  {{ configuration.name }}</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <p><strong>{{ configuration.tarif }} руб. / месяц </strong></p>                          
+                        </div>
+                        <div style="padding: 20px">
+                            Доступ через любой браузер, тонкий клиент, {{ configuration.id }} база, вход до {{ configuration.id|add:5}} клиентов                       
+                          </div>
+                        <div class="panel-footer">
+                            <a class="btn btn-lg btn-block btn-primary"
+                               href="{% url 'order/add' configuration.pk %}">Заказать</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+</div>
+</section>
+
+ {% endblock %} 
